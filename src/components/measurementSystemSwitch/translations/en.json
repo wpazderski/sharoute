@@ -1,0 +1,7 @@
+{
+    "label": "Measurement system:",
+    "options": {
+        "metric": "Metric",
+        "imperial": "Imperial"
+    }
+}

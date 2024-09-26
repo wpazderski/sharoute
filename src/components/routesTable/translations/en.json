@@ -1,0 +1,13 @@
+{
+    "headers": {
+        "name": "Name",
+        "createdAtTimestamp": "Created",
+        "updatedAtTimestamp": "Updated",
+        "actions": "Actions"
+    },
+    "openPublicView": "Open public view",
+    "openManagementView": "Open management view",
+    "deletingRoute": "Deleting route...",
+    "routeDeletedNotificationMessage": "Route deleted",
+    "routeDeletionFailureNotificationMessage": "Could not delete the route"
+}

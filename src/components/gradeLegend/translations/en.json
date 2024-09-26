@@ -1,0 +1,11 @@
+{
+    "header": "Grade:",
+    "negativeGradeColoringSelect": {
+        "label": "Negative grade coloring:",
+        "options": {
+            "mirrorPositiveGrade": "Mirror positive grade",
+            "negativeGradeGradient": "Negative grade gradient",
+            "singleColor": "Single color"
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "title": "Delete route point",
+    "message": {
+        "unnamedPoint": "Are you sure you want to delete the route point at {distance}?",
+        "namedPoint": "Are you sure you want to delete route point \"{name}\" at {distance}?"
+    },
+    "successMessage": "Route point deleted"
+}

@@ -1,0 +1,30 @@
+{
+    "title": "Route management",
+    "shareButton": {
+        "label": "Share!"
+    },
+    "shareModal": {
+        "title": "Share the route"
+    },
+    "form": {
+        "name": {
+            "label": "Name",
+            "placeholder": "Enter route name"
+        },
+        "description": {
+            "label": "Description",
+            "placeholder": "Enter route description"
+        },
+        "hasElevation": {
+            "label": "Show elevation stats and charts"
+        },
+        "result": {
+            "success": "Route saved",
+            "error": "Failed to save changes"
+        }
+    },
+    "errors": {
+        "noClosestPoint": "Could not find the closest point on the route - please try again"
+    },
+    "saving": "Saving the route..."
+}

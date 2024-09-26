@@ -1,0 +1,25 @@
+{
+    "gradeChart": {
+        "header": "Grade:",
+        "chart": {
+            "xAxis": {
+                "label": "Distance"
+            },
+            "yAxis": {
+                "label": "Grade"
+            }
+        }
+    },
+    "elevationChart": {
+        "header": "Elevation:",
+        "chart": {
+            "xAxis": {
+                "label": "Distance"
+            },
+            "yAxis": {
+                "label": "Elevation",
+                "avgElevation": "Average elevation"
+            }
+        }
+    }
+}

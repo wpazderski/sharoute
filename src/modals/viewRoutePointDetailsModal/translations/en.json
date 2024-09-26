@@ -1,0 +1,13 @@
+{
+    "title": {
+        "unnamed": "Route point",
+        "named": "Route point: {name}"
+    },
+    "props": {
+        "type": "Type",
+        "description": "Description",
+        "distanceFromRouteStart": "Distance from route start",
+        "elevation": "Elevation",
+        "coordinates": "Coordinates"
+    }
+}

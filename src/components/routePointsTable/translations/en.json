@@ -1,0 +1,17 @@
+{
+    "header": "Route points",
+    "mapGoToPoint": "View on the map",
+    "headers": {
+        "type": "Type",
+        "distance": "Distance",
+        "name": "Name",
+        "actions": "Actions"
+    },
+    "addingRoutePointInstructions": {
+        "header": "How to add a route point?",
+        "step1": "Click the route on the map below. The point will appear both on the map and in the table above.",
+        "step2": "The new point will be snapped to the route. If the location isn't correct, you can delete it and try again by clicking closer to the route.",
+        "step3": "You can edit the point's properties by clicking the 'Edit' button in the table."
+    },
+    "deleteButtonDisabledTooltip": "Route start/end points cannot be deleted"
+}

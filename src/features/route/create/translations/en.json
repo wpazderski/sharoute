@@ -1,0 +1,20 @@
+{
+    "title": "Upload a .gpx file",
+    "description": "To start creating a route, upload a .gpx file from your computer. You can create one in an app like Strava, Komoot, Garmin Connect, or any other app that supports exporting routes in .gpx format.",
+    "dropzone": {
+        "state": {
+            "empty": {
+                "title": "Drop a .gpx file here or click to select one",
+                "description": "You can upload a single .gpx file; the file size should not exceed {maxFileSizeMiB} MiB."
+            }
+        }
+    },
+    "errors": {
+        "invalidFileCount": "The file type is invalid. Only .gpx files are allowed.",
+        "invalidFileExtension": "Invalid file extension. Only .gpx files are allowed.",
+        "fileTooLarge": "The file size exceeds the maximum allowed size of {maxFileSizeMiB} MiB.",
+        "fileReadError": "An error occurred while reading the file. Please try again or try using a different file.",
+        "multipleTrkElements": "The .gpx file contains multiple tracks. Please upload a file with a single track.",
+        "multipleTrkSegElements": "The .gpx file contains multiple track segments. Please upload a file with a single track segment."
+    }
+}

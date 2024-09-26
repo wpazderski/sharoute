@@ -1,0 +1,9 @@
+{
+    "namePlaceholder": "Route",
+    "shareButton": {
+        "label": "Share!"
+    },
+    "shareModal": {
+        "title": "Share the route"
+    }
+}

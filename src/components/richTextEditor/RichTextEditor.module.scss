@@ -1,0 +1,14 @@
+.content-scroll-area {
+    > div > div {
+        height: 100%;
+        > div {
+            height: 100%;
+            > div {
+                height: 100%;
+                > div {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

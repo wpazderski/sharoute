@@ -1,0 +1,17 @@
+{
+    "title": "Edit route point",
+    "fields": {
+        "type": {
+            "label": "Type",
+            "placeholder": "Select type"
+        },
+        "name": {
+            "label": "Name",
+            "placeholder": "Enter name"
+        },
+        "description": {
+            "label": "Description",
+            "placeholder": "Enter description"
+        }
+    }
+}

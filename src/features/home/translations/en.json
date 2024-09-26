@@ -1,0 +1,21 @@
+{
+    "title": "Create and share routes",
+    "introItems": {
+        "upload": {
+            "title": "Upload a .gpx file",
+            "description": "Start by uploading a .gpx file"
+        },
+        "nameDescription": {
+            "title": "Name & description",
+            "description": "Give your route a name and a description"
+        },
+        "points": {
+            "title": "Add points",
+            "description": "Add points such as POIs, food stops, photos, warnings about dangers and more"
+        },
+        "share": {
+            "title": "Share",
+            "description": "Share your route via a link or QR code"
+        }
+    }
+}

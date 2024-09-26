@@ -1,0 +1,7 @@
+{
+    "title": "Delete route",
+    "message": {
+        "unnamedRoute": "Are you sure you want to delete the route?",
+        "namedRoute": "Are you sure you want to delete route \"{name}\""
+    }
+}
