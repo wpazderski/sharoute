@@ -385,15 +385,16 @@ export class MapboxMapManager {
         const lastSegment = gradesWithDistances[gradesWithDistances.length - 1]!;
         const distance = lastSegment.start + lastSegment.length;
         const arr: Array<number | string> = [];
+        let prevPoint = Number.MIN_SAFE_INTEGER;
         for (const gradeWithDistance of gradesWithDistances) {
             const grade = gradeWithDistance.grade;
             const colorStr = GradeColors.getColorForGrade(grade, negativeGradeColoring);
-            arr.push(
-                gradesWithDistances[gradesWithDistances.length - 1] === gradeWithDistance
-                    ? (gradeWithDistance.start + gradeWithDistance.length) / distance
-                    : gradeWithDistance.start / distance,
-                colorStr,
-            );
+            const isLast = gradesWithDistances[gradesWithDistances.length - 1] === gradeWithDistance;
+            const point = isLast ? (gradeWithDistance.start + gradeWithDistance.length) / distance : gradeWithDistance.start / distance;
+            if (point > prevPoint) {
+                arr.push(point, colorStr);
+                prevPoint = point;
+            }
         }
         return arr;
     }
