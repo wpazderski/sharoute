@@ -52,7 +52,7 @@ const commonNamingConventionRules = [
         selector: "variable",
         types: ["boolean"],
         format: ["StrictPascalCase"],
-        prefix: ["can", "did", "does", "do", "has", "have", "is", "should", "was", "were", "will"],
+        prefix: ["are", "can", "did", "does", "do", "has", "have", "is", "should", "was", "were", "will"],
     },
 
     // Use both strictCamelCase and StrictPascalCase for const variables; allow optional single or double leading underscore
