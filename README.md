@@ -47,7 +47,7 @@ Start by cloning the repository and installing dependencies:
 ```
 git clone https://github.com/wpazderski/sharoute.git
 cd sharoute
-npm install
+pnpm install
 ```
 
 Then copy `.env.example` file to `.env.local` and set env vars.
