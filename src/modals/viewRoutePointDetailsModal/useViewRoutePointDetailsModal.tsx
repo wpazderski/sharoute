@@ -9,9 +9,15 @@ export function useViewRoutePointDetailsModal() {
 
     const open = useCallback(
         (routePoint: RoutePoint) => {
+            const modalId = `editRoutePoint-${routePoint.id}`;
+            const close = () => {
+                modals.close(modalId);
+            };
             modals.open({
+                modalId: modalId,
                 title: routePoint.name.trim().length > 0 ? t("title.named", { name: routePoint.name }) : t("title.unnamed"),
-                children: <ViewRoutePointDetailsModalContent routePoint={routePoint} />,
+                // eslint-disable-next-line react/jsx-no-bind
+                children: <ViewRoutePointDetailsModalContent routePoint={routePoint} close={close} />,
                 size: "calc(min(90%, 1200px))",
             });
         },

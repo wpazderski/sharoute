@@ -1,5 +1,9 @@
-import { Box, Grid, ScrollArea, Stack } from "@mantine/core";
+"use client";
+
+import { Box, Center, Grid, ScrollArea, Stack } from "@mantine/core";
 import { useFormatter, useTranslations } from "next-intl";
+import { useCallback } from "react";
+import { Button } from "@/components/button/Button";
 import { HtmlContent } from "@/components/HtmlContent";
 import { PropView } from "@/components/PropView";
 import { useDistanceFormatter } from "@/hooks/useDistanceFormatter";
@@ -11,9 +15,11 @@ import { MeasurementSystemsConverter } from "@/utils/MeasurementSystemsConverter
 
 export interface ViewRoutePointDetailsModalContentProps {
     routePoint: RoutePoint;
+    close: () => void;
 }
 
 export function ViewRoutePointDetailsModalContent(props: ViewRoutePointDetailsModalContentProps) {
+    const propsClose = props.close;
     const t = useTranslations("modals.viewRoutePointDetails");
     const tRoutePointTypes = useTranslations("routePointTypes");
     const { number: numberFormatter } = useFormatter();
@@ -26,6 +32,10 @@ export function ViewRoutePointDetailsModalContent(props: ViewRoutePointDetailsMo
     const distanceFormatted = formatDistance(props.routePoint.distanceFromRouteStartMeters);
     const latLonFormatted = formatLatLon({ lat: props.routePoint.lat, lon: props.routePoint.lon });
     const elevationFormatted = numberFormatter(elevation, isMetricSystem ? I18nNumberFormatName.MetersRough : I18nNumberFormatName.FeetRough);
+
+    const handleOkClick = useCallback(() => {
+        propsClose();
+    }, [propsClose]);
 
     return (
         <Stack gap="md" p="md">
@@ -58,6 +68,9 @@ export function ViewRoutePointDetailsModalContent(props: ViewRoutePointDetailsMo
                     </ScrollArea.Autosize>
                 </PropView>
             ) : null}
+            <Center mt="lg">
+                <Button type="button" preset="close" size="sm" onClick={handleOkClick} />
+            </Center>
         </Stack>
     );
 }
