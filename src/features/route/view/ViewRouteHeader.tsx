@@ -2,6 +2,7 @@ import { Box, Group, Modal } from "@mantine/core";
 import { useTranslations } from "next-intl";
 import { useCallback, useState } from "react";
 import { Button } from "@/components/button/Button";
+import { RouteGpxDownloadButton } from "@/components/routeGpxDownloadButton/RouteGpxDownloadButton";
 import { ShareRoute } from "@/components/shareRoute/ShareRoute";
 import type { PublicRoute } from "@/lib/db/collections/routes/types";
 
@@ -25,6 +26,7 @@ export function ViewRouteHeader(props: ViewRouteHeaderProps) {
             <Button type="button" icon="share" size="md" onClick={handleShareClick} color="primary">
                 {t("shareButton.label")}
             </Button>
+            <RouteGpxDownloadButton route={props.route} />
             <Modal opened={isShareModalOpened} onClose={handleShareModalClose} size="lg" title={t("shareModal.title")}>
                 <Box px="xl" py="md">
                     <ShareRoute routePublicId={props.route.publicId} centeredQrCode noHeader />

@@ -3,6 +3,7 @@
     "appTitle": "Sharoute",
     "appLogoText": "Sharoute",
     "appDescription": "Let's share a route!",
+    "demoModeWarningWithClickToReadMore": "Demo mode - click to read more",
     "mainNav": {
         "home": "Home",
         "myRoutes": "My routes",
@@ -12,6 +13,7 @@
         "buttons": {
             "add": "Add",
             "cancel": "Cancel",
+            "close": "Close",
             "confirm": "Confirm",
             "delete": "Delete",
             "edit": "Edit",

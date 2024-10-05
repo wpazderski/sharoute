@@ -18,6 +18,8 @@ export async function loadAllI18nMessages(locale: I18nLocale) {
                 .default as typeof import("../components/noneText/translations/en.json"),
             routeCharts: (await import(`../components/routeCharts/translations/${locale}.json`))
                 .default as typeof import("../components/routeCharts/translations/en.json"),
+            routeGpxDownloadButton: (await import(`../components/routeGpxDownloadButton/translations/${locale}.json`))
+                .default as typeof import("../components/routeGpxDownloadButton/translations/en.json"),
             routePointsTable: (await import(`../components/routePointsTable/translations/${locale}.json`))
                 .default as typeof import("../components/routePointsTable/translations/en.json"),
             routesLimitExceededBanner: (await import(`../components/routesLimitExceededBanner/translations/${locale}.json`))
