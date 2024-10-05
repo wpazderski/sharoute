@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { type Dispatch, type SetStateAction, useCallback, useRef } from "react";
 import type { UpdateRouteRequest } from "@/app/api/route/update/types";
 import { Button } from "@/components/button/Button";
+import { DemoWarningButton } from "@/components/DemoWarningButton";
 import { RichTextEditor } from "@/components/richTextEditor/RichTextEditor";
 import { RoutePointsTable } from "@/components/routePointsTable/RoutePointsTable";
 import type { WithProcessingFunction } from "@/hooks/useProcessing";
@@ -162,6 +163,7 @@ export function RoutePropsForm(props: RoutePropsFormProps) {
             </Box>
             <Center>
                 <Group>
+                    <DemoWarningButton />
                     <Button type="button" preset="save" size="sm" onClick={handleSaveClick} />
                     <Button type="button" preset="reset" size="sm" onClick={handleResetClick} />
                 </Group>

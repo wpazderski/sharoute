@@ -10,6 +10,14 @@ export class Env {
         return this.assertVarDefined("NEXT_PUBLIC_APP_ORIGIN", process.env["NEXT_PUBLIC_APP_ORIGIN"]);
     }
 
+    static get isDemoMode(): boolean {
+        return this.isTruthy(process.env["NEXT_PUBLIC_IS_DEMO_MODE"]);
+    }
+
+    static get demoModeMaxRoutes(): number {
+        return this.parseNumericValue(process.env["NEXT_PUBLIC_DEMO_MODE_MAX_ROUTES"], 3);
+    }
+
     static get mongodbReplicaSet(): string {
         return this.assertVarDefined("MONGODB_REPLICA_SET", process.env["MONGODB_REPLICA_SET"]);
     }
@@ -59,5 +67,19 @@ export class Env {
             throw new MissingEnvVarError(varName);
         }
         return varValue;
+    }
+
+    private static isTruthy(str: string | undefined): boolean {
+        if (str === undefined) {
+            return false;
+        }
+        // eslint-disable-next-line no-param-reassign
+        str = str.toLowerCase();
+        return str === "true" || str === "1" || str === "yes" || str === "on" || str === "enabled" || str === "y";
+    }
+
+    private static parseNumericValue(str: string | undefined, defaultValue: number): number {
+        const value = str === undefined ? Number.NaN : parseInt(str, 10);
+        return Number.isNaN(value) ? defaultValue : value;
     }
 }

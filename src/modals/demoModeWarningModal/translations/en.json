@@ -1,0 +1,9 @@
+{
+    "title": "Demo mode is enabled",
+    "intro": "This instance of the application is running in demo mode. Therefore:",
+    "list": {
+        "item-1": "You can have at most {maxRoutesCount} routes. To create a new route, you must delete an existing one.",
+        "item-2": "Routes can be deleted at any time."
+    },
+    "outro": "The recommended way to use the application is to run your own instance. Here's the repository:"
+}

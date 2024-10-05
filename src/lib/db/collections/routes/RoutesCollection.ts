@@ -47,6 +47,12 @@ export class RoutesCollection extends Collection<Route, RouteId> {
         await collection.createIndex({ publicId: 1 }, { unique: true });
     }
 
+    async countRoutesByOwnerId(ownerId: RouteOwnerId): Promise<number> {
+        const collection = await this.getCollection();
+        const dbObjectsCount = await collection.countDocuments({ ownerId });
+        return dbObjectsCount;
+    }
+
     async getBasicRoutesDataByOwnerId(ownerId: RouteOwnerId): Promise<BasicRouteData[]> {
         const collection = await this.getCollection();
         const dbObjects = (await collection

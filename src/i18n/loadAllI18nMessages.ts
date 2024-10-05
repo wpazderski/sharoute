@@ -20,6 +20,8 @@ export async function loadAllI18nMessages(locale: I18nLocale) {
                 .default as typeof import("../components/routeCharts/translations/en.json"),
             routePointsTable: (await import(`../components/routePointsTable/translations/${locale}.json`))
                 .default as typeof import("../components/routePointsTable/translations/en.json"),
+            routesLimitExceededBanner: (await import(`../components/routesLimitExceededBanner/translations/${locale}.json`))
+                .default as typeof import("../components/routesLimitExceededBanner/translations/en.json"),
             routesTable: (await import(`../components/routesTable/translations/${locale}.json`))
                 .default as typeof import("../components/routesTable/translations/en.json"),
             routeStats: (await import(`../components/routeStats/translations/${locale}.json`))
@@ -46,6 +48,8 @@ export async function loadAllI18nMessages(locale: I18nLocale) {
                 .default as typeof import("../modals/deleteRoutePointConfirmationModal/translations/en.json"),
             editRoutePoint: (await import(`../modals/editRoutePointModal/translations/${locale}.json`))
                 .default as typeof import("../modals/editRoutePointModal/translations/en.json"),
+            demoModeWarning: (await import(`../modals/demoModeWarningModal/translations/${locale}.json`))
+                .default as typeof import("../modals/demoModeWarningModal/translations/en.json"),
             viewRoutePointDetails: (await import(`../modals/viewRoutePointDetailsModal/translations/${locale}.json`))
                 .default as typeof import("../modals/viewRoutePointDetailsModal/translations/en.json"),
         },

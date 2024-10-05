@@ -21,6 +21,7 @@ interface CommonButtonProps extends React.PropsWithChildren {
     width?: number | string | undefined;
     height?: number | string | undefined;
     title?: string | undefined;
+    style?: React.CSSProperties | undefined;
 }
 
 interface FormButtonProps extends CommonButtonProps {
@@ -31,6 +32,7 @@ interface FormButtonProps extends CommonButtonProps {
 interface LinkButtonProps extends CommonButtonProps {
     type: "link" | "linkExternal" | "linkInternal";
     href: string;
+    shouldOpenInNewTab?: boolean | undefined;
     linkType?: "basic" | "internal" | "external" | undefined;
     onClick?: MouseEventHandler<HTMLAnchorElement> | undefined;
 }
@@ -79,6 +81,8 @@ export function Button(props: ButtonProps) {
                 h={props.height ?? (props.size === "xxs" ? 24 : undefined)}
                 px={props.size === "xxs" ? 5 : undefined}
                 py={props.size === "xxs" ? 0 : undefined}
+                target={props.shouldOpenInNewTab === true ? "_blank" : undefined}
+                style={props.style}
             >
                 <ButtonContent hasLabel={hasLabel} icon={icon} label={label} type={props.type} size={props.size} />
             </MantineButton>
@@ -101,6 +105,7 @@ export function Button(props: ButtonProps) {
                 h={props.height ?? (props.size === "xxs" ? 24 : undefined)}
                 px={props.size === "xxs" ? 5 : undefined}
                 py={props.size === "xxs" ? 0 : undefined}
+                style={props.style}
             >
                 <ButtonContent hasLabel={hasLabel} icon={icon} label={label} type={props.type} size={props.size} />
             </MantineButton>

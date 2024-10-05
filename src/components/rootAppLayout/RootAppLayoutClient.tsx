@@ -9,9 +9,11 @@ import { useCallback } from "react";
 import { appRoutes } from "@/app/appRoutes";
 import { AppLogo } from "@/components/AppLogo";
 import { Icon } from "@/components/Icon";
+import { useDemoModeWarningModal } from "@/modals/demoModeWarningModal/useDemoModeWarningModal";
+import { Env } from "@/utils/Env";
 import { Button } from "../button/Button";
 import { CreateRouteButtonLink } from "../createRouteButtonLink/CreateRouteButtonLink";
-import { headerHeight, sidebarWidth } from "./rootAppLayoutConsts";
+import { demoWarningHeight, headerHeight, sidebarWidth } from "./rootAppLayoutConsts";
 
 export interface RootAppLayoutClientProps extends React.PropsWithChildren {}
 
@@ -20,6 +22,8 @@ export function RootAppLayoutClient(props: RootAppLayoutClientProps) {
     const [isBurgerNavOpen, { toggle: setIsBurgerNavOpen }] = useDisclosure();
     const t = useTranslations();
     const userEmail = session.data?.user?.email ?? null;
+
+    const { open: openDemoModeWarningModal } = useDemoModeWarningModal();
 
     const handleSignInClick = useCallback(() => {
         void signIn();
@@ -31,10 +35,20 @@ export function RootAppLayoutClient(props: RootAppLayoutClientProps) {
     return (
         <AppShell header={{ height: headerHeight }} navbar={{ width: sidebarWidth, breakpoint: "sm", collapsed: { mobile: !isBurgerNavOpen } }} padding="md">
             <AppShell.Header withBorder={false} bg="gray.3">
-                <Group h="100%" px="md" justify="space-between">
-                    <Burger opened={isBurgerNavOpen} onClick={setIsBurgerNavOpen} hiddenFrom="sm" size="sm" />
-                    <AppLogo type="imageWithText" href={appRoutes.home()} />
-                </Group>
+                <Stack gap={0}>
+                    {Env.isDemoMode ? (
+                        <Center h={demoWarningHeight} bg="warning.8" c="#fff" style={{ cursor: "pointer" }} onClick={openDemoModeWarningModal}>
+                            <Icon name="warningTriangle" />
+                            <Text size="sm" ml="sm" fw="700">
+                                {t("demoModeWarningWithClickToReadMore")}
+                            </Text>
+                        </Center>
+                    ) : null}
+                    <Group h={headerHeight - demoWarningHeight} px="md" justify="space-between">
+                        <Burger opened={isBurgerNavOpen} onClick={setIsBurgerNavOpen} hiddenFrom="sm" size="sm" />
+                        <AppLogo type="imageWithText" href={appRoutes.home()} />
+                    </Group>
+                </Stack>
             </AppShell.Header>
             <AppShell.Navbar withBorder={false} bg="gray.1">
                 <AppShell.Section grow my="md" component={ScrollArea}>

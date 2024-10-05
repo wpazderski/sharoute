@@ -1,6 +1,6 @@
 "use client";
 
-import { Group, Text } from "@mantine/core";
+import { Box, Group, Text } from "@mantine/core";
 import { Dropzone, type FileWithPath } from "@mantine/dropzone";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -9,29 +9,37 @@ import { appRoutes } from "@/app/appRoutes";
 import { AuthGuardClient } from "@/components/authGuard/AuthGuardClient";
 import { Icon } from "@/components/Icon";
 import { PageWrapper } from "@/components/PageWrapper";
+import { RoutesLimitExceededBanner } from "@/components/routesLimitExceededBanner/RoutesLimitExceededBanner";
 import { ApiClient } from "@/lib/ApiClient";
 import { ApiError } from "@/lib/errors/ApiError";
 import { InvalidGpxFileError } from "@/lib/gpxFile/errors/InvalidGpxFileError";
 import { MultipleTrkElementsError } from "@/lib/gpxFile/errors/MultipleTrkElementsError";
 import { MultipleTrkSegElementsError } from "@/lib/gpxFile/errors/MultipleTrkSegElementsError";
 import { GpxFileParser } from "@/lib/gpxFile/GpxFileParser";
+import { Env } from "@/utils/Env";
 import { Notifications } from "@/utils/Notifications";
 
 const maxFileSizeMiB = 10;
 
-export function CreateRoute() {
+export interface CreateRouteProps {
+    numberOfOwnRoutes: number;
+}
+
+export function CreateRoute(props: CreateRouteProps) {
     return (
         <AuthGuardClient unauthenticatedAction="signIn">
-            <CreateRouteCore />
+            <CreateRouteCore numberOfOwnRoutes={props.numberOfOwnRoutes} />
         </AuthGuardClient>
     );
 }
 
-function CreateRouteCore() {
+function CreateRouteCore(props: CreateRouteProps) {
     const router = useRouter();
     const t = useTranslations("features.route.create");
     const tApiErrors = useTranslations("apiErrors");
     const [isProcessingFile, setIsProcessingFile] = useState(false);
+
+    const routesLimit = Env.isDemoMode ? Env.demoModeMaxRoutes : Number.MAX_VALUE;
 
     const handleDrop = useCallback(
         (files: FileWithPath[]) => {
@@ -82,28 +90,34 @@ function CreateRouteCore() {
 
     return (
         <PageWrapper title={t("title")} subTitle={t("description")}>
-            <Dropzone onDrop={handleDrop} maxSize={maxFileSizeMiB * 1024 * 1024} maxFiles={1} loading={isProcessingFile}>
-                <Group justify="center" gap="xl" mih={220} style={{ pointerEvents: "none" }}>
-                    <Dropzone.Accept>
-                        <Icon name="upload" size="xl" />
-                    </Dropzone.Accept>
-                    <Dropzone.Reject>
-                        <Icon name="error" size="xl" />
-                    </Dropzone.Reject>
-                    <Dropzone.Idle>
-                        <Icon name="upload" size="xl" />
-                    </Dropzone.Idle>
+            {props.numberOfOwnRoutes >= routesLimit ? (
+                <Box mt="md">
+                    <RoutesLimitExceededBanner withGoToMyRoutesButton />
+                </Box>
+            ) : (
+                <Dropzone onDrop={handleDrop} maxSize={maxFileSizeMiB * 1024 * 1024} maxFiles={1} loading={isProcessingFile}>
+                    <Group justify="center" gap="xl" mih={220} style={{ pointerEvents: "none" }}>
+                        <Dropzone.Accept>
+                            <Icon name="upload" size="xl" />
+                        </Dropzone.Accept>
+                        <Dropzone.Reject>
+                            <Icon name="error" size="xl" />
+                        </Dropzone.Reject>
+                        <Dropzone.Idle>
+                            <Icon name="upload" size="xl" />
+                        </Dropzone.Idle>
 
-                    <div>
-                        <Text size="xl" inline>
-                            {t("dropzone.state.empty.title")}
-                        </Text>
-                        <Text size="sm" c="dimmed" inline mt={7}>
-                            {t("dropzone.state.empty.description", { maxFileSizeMiB })}
-                        </Text>
-                    </div>
-                </Group>
-            </Dropzone>
+                        <div>
+                            <Text size="xl" inline>
+                                {t("dropzone.state.empty.title")}
+                            </Text>
+                            <Text size="sm" c="dimmed" inline mt={7}>
+                                {t("dropzone.state.empty.description", { maxFileSizeMiB })}
+                            </Text>
+                        </div>
+                    </Group>
+                </Dropzone>
+            )}
         </PageWrapper>
     );
 }

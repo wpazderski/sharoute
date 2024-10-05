@@ -1,0 +1,5 @@
+{
+    "title": "Routes limit exceeded",
+    "message": "You have reached the maximum number of routes you can have ({maxRoutesCount}). To create a new route, you must delete an existing one.",
+    "goToMyRoutes": "Go to My Routes"
+}

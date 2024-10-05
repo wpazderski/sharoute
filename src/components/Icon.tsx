@@ -1,9 +1,11 @@
 import {
+    IconAlertTriangleFilled,
     IconArrowRight,
     IconBackspace,
     IconCheck,
     IconCopy,
     IconDeviceFloppy,
+    IconDownload,
     IconExclamationMark,
     IconExternalLink,
     IconFocus2,
@@ -40,9 +42,11 @@ const iconsMap = {
     add: IconPlus,
     cancel: IconX,
     check: IconCheck,
+    close: IconCheck,
     confirm: IconCheck,
     copy: IconCopy,
     delete: IconTrash,
+    download: IconDownload,
     edit: IconPencil,
     error: IconX,
     externalLink: IconExternalLink,
@@ -64,6 +68,7 @@ const iconsMap = {
     upload: IconUpload,
     viewDetails: IconZoomQuestionFilled,
     warning: IconExclamationMark,
+    warningTriangle: IconAlertTriangleFilled,
     write: IconPencil,
 } as const;
 

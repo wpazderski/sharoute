@@ -4,7 +4,9 @@ import { Box, Loader, LoadingOverlay, Stack, Table, Text } from "@mantine/core";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import type { BasicRouteData } from "@/lib/db/collections/routes/types";
+import { Env } from "@/utils/Env";
 import { headerHeight } from "../rootAppLayout/rootAppLayoutConsts";
+import { RoutesLimitExceededBanner } from "../routesLimitExceededBanner/RoutesLimitExceededBanner";
 import { RoutesTableRow } from "./RoutesTableRow";
 
 export interface RoutesTableProps {
@@ -16,8 +18,16 @@ export function RoutesTable(props: RoutesTableProps) {
     const [isDeletingRoute, setIsDeletingRoute] = useState(false);
     const [routes, setRoutes] = useState<BasicRouteData[]>(props.routes);
 
+    const numRoutes = routes.length;
+    const routesLimit = Env.isDemoMode ? Env.demoModeMaxRoutes : Number.MAX_VALUE;
+
     return (
         <Box>
+            {numRoutes >= routesLimit ? (
+                <Box mt="md" mb="xl">
+                    <RoutesLimitExceededBanner />
+                </Box>
+            ) : null}
             <Table stickyHeader stickyHeaderOffset={headerHeight} verticalSpacing="sm" horizontalSpacing="sm" striped highlightOnHover>
                 <Table.Thead>
                     <Table.Tr>

@@ -10,6 +10,7 @@ import type {
     RouteTrackPointLatitude,
     RouteTrackPointLongitude,
 } from "@/lib/db/collections/routes/types";
+import { Env } from "@/utils/Env";
 import { Logger } from "@/utils/Logger";
 import { createRouteRequestValidationSchema } from "./createRouteRequestValidationSchema";
 import type { CreateRouteRequest, CreateRouteResponse } from "./types";
@@ -27,6 +28,12 @@ export async function POST(request: Request) {
         Logger.errorDev("Validation errors:", validationResult.error.errors);
         return NextResponse.json({ error: "Bad request" }, { status: 400 });
     }
+
+    const numberOfOwnRoutes = await RoutesCollection.getInstance().countRoutesByOwnerId(userId);
+    if (Env.isDemoMode && numberOfOwnRoutes >= Env.demoModeMaxRoutes) {
+        return NextResponse.json({ error: "Routes limit exceeded" }, { status: 403 });
+    }
+
     const gpxRoute = validationResult.data.gpxRoute;
     const route = await RoutesCollection.getInstance().createRouteFromMinimalData({
         name: (gpxRoute.name ?? "") as RouteName,

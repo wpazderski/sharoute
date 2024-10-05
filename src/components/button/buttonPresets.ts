@@ -7,6 +7,7 @@ export type ButtonPresetName =
     | "default"
     | "add"
     | "cancel"
+    | "close"
     | "confirm"
     | "confirmDanger"
     | "delete"
@@ -46,6 +47,12 @@ const buttonPresets = {
         priority: "secondary",
         icon: "cancel",
         label: "cancel",
+    },
+    close: {
+        color: "primary",
+        priority: "primary",
+        icon: "close",
+        label: "close",
     },
     confirm: {
         color: "success",
