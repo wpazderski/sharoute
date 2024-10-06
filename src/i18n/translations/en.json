@@ -7,6 +7,7 @@
     "mainNav": {
         "home": "Home",
         "myRoutes": "My routes",
+        "gitHubRepo": "GitHub repo",
         "signedInAs": "Signed in as:"
     },
     "forms": {

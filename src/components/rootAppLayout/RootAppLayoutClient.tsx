@@ -13,6 +13,7 @@ import { useDemoModeWarningModal } from "@/modals/demoModeWarningModal/useDemoMo
 import { Env } from "@/utils/Env";
 import { Button } from "../button/Button";
 import { CreateRouteButtonLink } from "../createRouteButtonLink/CreateRouteButtonLink";
+import { LinkExternal } from "../LinkExternal";
 import { demoWarningHeight, headerHeight, sidebarWidth } from "./rootAppLayoutConsts";
 
 export interface RootAppLayoutClientProps extends React.PropsWithChildren {}
@@ -44,7 +45,7 @@ export function RootAppLayoutClient(props: RootAppLayoutClientProps) {
                             </Text>
                         </Center>
                     ) : null}
-                    <Group h={headerHeight - demoWarningHeight} px="md" justify="space-between">
+                    <Group h={Env.isDemoMode ? headerHeight - demoWarningHeight : headerHeight} px="md" justify="space-between" align="center">
                         <Burger opened={isBurgerNavOpen} onClick={setIsBurgerNavOpen} hiddenFrom="sm" size="sm" />
                         <AppLogo type="imageWithText" href={appRoutes.home()} />
                     </Group>
@@ -68,6 +69,14 @@ export function RootAppLayoutClient(props: RootAppLayoutClientProps) {
                             </Center>
                         ) : null}
                     </Stack>
+                    <NavLink
+                        mt={50}
+                        label={t("mainNav.gitHubRepo")}
+                        leftSection={<Icon name="github" size={"md"} />}
+                        href="https://github.com/wpazderski/sharoute"
+                        target="_blank"
+                        component={LinkExternal}
+                    />
                 </AppShell.Section>
                 <AppShell.Section>
                     <Stack gap="md" align="stretch" p="md" pb="xl">
