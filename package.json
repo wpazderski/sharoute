@@ -1,9 +1,11 @@
 {
     "name": "@wpazderski/sharoute",
     "version": "1.0.0",
-    "description": "@todo",
+    "description": "An app for sharing gpx routes",
     "keywords": [
-        "@todo"
+        "gpx",
+        "route",
+        "share"
     ],
     "author": "Witold Pazderski",
     "license": "MIT",
