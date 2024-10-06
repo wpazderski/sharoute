@@ -27,6 +27,7 @@ export class ApiClient {
     static async get<TResponseData>(url: string): Promise<TResponseData> {
         const res = await fetch(convertAppRoutePathToFullUrl(url), {
             method: "GET",
+            cache: "no-store",
         });
         if (!res.ok) {
             const errorI18nKey = this.convertStatusCodeToI18nKey(res.status);

@@ -59,7 +59,7 @@ export function ViewRoutePointDetailsModalContent(props: ViewRoutePointDetailsMo
                     </PropView>
                 </Grid.Col>
             </Grid>
-            {props.routePoint.description.trim().length > 0 ? (
+            {props.routePoint.description.trim().length > 0 && props.routePoint.description.trim() !== "<p></p>" ? (
                 <PropView label={t("props.description")}>
                     <ScrollArea.Autosize mah={400} type="auto">
                         <Box pr={30}>

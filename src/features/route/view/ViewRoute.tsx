@@ -54,7 +54,7 @@ export function ViewRoute(props: ViewRouteProps) {
     return (
         <PageWrapper title={<ViewRouteHeader route={props.route} />} size="full">
             <Stack gap="xl" pb={100}>
-                {props.route.description.trim().length > 0 ? (
+                {props.route.description.trim().length > 0 && props.route.description.trim() !== "<p></p>" ? (
                     <Box my="lg">
                         <ScrollArea.Autosize mah={500} type="auto">
                             <Box px={30}>
@@ -63,7 +63,7 @@ export function ViewRoute(props: ViewRouteProps) {
                         </ScrollArea.Autosize>
                     </Box>
                 ) : null}
-                <Group align="flex-start" wrap="nowrap" mt="md" mb="md">
+                <Group align="flex-start" wrap="nowrap" mb="md">
                     <Box style={{ flex: "1 1 auto", borderRadius: 5, overflow: "hidden" }} bg="gray.1">
                         <Map
                             routeAnalyzer={routeAnalyzer}
