@@ -5,7 +5,7 @@ _Share gpx routes!_
 <hr />
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/wpazderski/sharoute/master/readme-img1.png" width="900" />
+    <img src="https://github.com/wpazderski/sharoute/blob/master/readme-img1.png?raw=true" width="900" />
 </p>
 
 <hr />
