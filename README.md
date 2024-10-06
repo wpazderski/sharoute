@@ -1,6 +1,14 @@
 # Sharoute
 
-_Share routes!_
+_Share gpx routes!_
+
+<hr />
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/wpazderski/sharoute/master/readme-img1.png" width="900" />
+</p>
+
+<hr />
 
 ## Main features
 
@@ -14,6 +22,12 @@ _Share routes!_
     -   Map with the route
     -   Grade and elevation charts
     -   Basic stats e.g. "elevation gain"
+
+## Demo
+
+A demo instance is available here: https://sharoute.vercel.app
+
+There are some limitations when the app runs in demo mode - read warning in the app for more details.
 
 ## Stuff to implement in the future
 
@@ -50,7 +64,11 @@ cd sharoute
 pnpm install
 ```
 
-Then copy `.env.example` file to `.env.local` and set env vars.
+Then copy `.env.example` file to `.env.local` and set env vars. You'll need:
+
+-   MongoDB connection params,
+-   Google OAuth ID and Secret,
+-   Mapbox Access Token.
 
 ### Development
 
